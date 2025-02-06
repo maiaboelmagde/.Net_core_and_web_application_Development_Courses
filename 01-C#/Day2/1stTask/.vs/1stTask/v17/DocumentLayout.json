@@ -1,0 +1,41 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\HPprobook\\Desktop\\ITI\\Course15-C#\\Day2\\1stTask\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9F2081FE-7447-466C-B931-DD42E263DBFC}|1stTask\\1stTask.csproj|c:\\users\\hpprobook\\desktop\\iti\\course15-c#\\day2\\1sttask\\1sttask\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F2081FE-7447-466C-B931-DD42E263DBFC}|1stTask\\1stTask.csproj|solutionrelative:1sttask\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\HPprobook\\Desktop\\ITI\\Course15-C#\\Day2\\1stTask\\1stTask\\Program.cs",
+              "RelativeDocumentMoniker": "1stTask\\Program.cs",
+              "ToolTip": "C:\\Users\\HPprobook\\Desktop\\ITI\\Course15-C#\\Day2\\1stTask\\1stTask\\Program.cs",
+              "RelativeToolTip": "1stTask\\Program.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAQwBkAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-22T14:32:30.024Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
