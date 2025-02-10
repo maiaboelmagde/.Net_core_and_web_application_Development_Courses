@@ -6,24 +6,46 @@ using System.Threading.Tasks;
 
 namespace TaskSolution
 {
-    public class AnswerClass
-    {
+    using System;
 
+    public class AnswerClass : ICloneable, IComparable<AnswerClass>
+    {
         public string AnswerText { get; set; }
         public bool IsCorrect { get; set; }
 
-
-        public AnswerClass( string answerText, bool isCorrect)
+        public AnswerClass(string answerText, bool isCorrect)
         {
             AnswerText = answerText;
             IsCorrect = isCorrect;
+        }
+
+        public string getOption()
+        {
+            return AnswerText;
         }
 
         public override string ToString()
         {
             return $"{AnswerText} - {(IsCorrect ? "Correct" : "Incorrect")}";
         }
+
+        public object Clone()
+        {
+            return new AnswerClass(AnswerText, IsCorrect);
+        }
+
+        public int CompareTo(AnswerClass other)/////////////////////////////////////////////////////////////Complete this later
+        {
+            if (other == null) return 1;
+            return string.Compare(this.AnswerText, other.AnswerText, StringComparison.Ordinal);
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(AnswerText, IsCorrect);
+        }
     }
+
 
     public class AnswerList : List<AnswerClass>
     {

@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Reflection.PortableExecutable;
-using System.Text;
-using System.Threading.Tasks;
+
 namespace TaskSolution
 {
-    public abstract class QuestionClass
+    public abstract class QuestionClass : ICloneable, IComparable<QuestionClass>
     {
         public string Header { get; set; }
         public AnswerList Body { get; set; }
@@ -22,16 +18,63 @@ namespace TaskSolution
 
         public virtual string GetQuestionInfo()
         {
-            return $"Header: {Header}, Marks: {Marks}";
+            return $"Header: {Header}, Marks: {Marks} ";
+        }
+
+        public string getQuestion()
+        {
+            string question = $"{Header} ({Marks} Marks) ";
+            int index = 1;
+            foreach (var item in Body)
+            {
+                question += $"\n{index} - {item.getOption()}";
+                index++;
+            }
+            return question;
         }
 
         public override string ToString()
         {
-            return $"MCQ: {Header}, Marks: {Marks}, Body: {Body.ToString()}";
+            return $"Question: {Header}, Marks: {Marks}, Body: {Body.ToString()}";
         }
+
+
+
+        public object Clone()
+        {
+            AnswerList clonedBody = new AnswerList();
+            foreach (var answer in Body)
+            {
+                clonedBody.Add((AnswerClass)answer.Clone());
+            }
+
+            switch (this)
+            {
+                case MCQOneChoice mcqOne:
+                    return new MCQOneChoice(Header, clonedBody, Marks);
+                case MCQMultiChoices mcqMulti:
+                    return new MCQMultiChoices(Header, clonedBody, Marks);
+                case TF tf:
+                    return new TF(Header, Body.First().IsCorrect, Marks);
+                default:
+                    throw new NotImplementedException("Unknown question type");
+            }
+        }
+
+
+        public int CompareTo(QuestionClass other)                                                      //Note: complete handling it later
+        {
+            if (other == null) return 1;
+            return this.Marks.CompareTo(other.Marks);
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Header, Marks);
+        }
+
     }
 
-    
     public class MCQOneChoice : QuestionClass
     {
         public MCQOneChoice(string header, AnswerList body, int marks) : base(header, body, marks)
@@ -43,7 +86,6 @@ namespace TaskSolution
         {
             if (Body.Count(a => a.IsCorrect) > 1)
             {
-                // Keep only the first correct answer, set the rest to false
                 bool foundCorrect = false;
                 foreach (var answer in Body)
                 {
@@ -52,14 +94,15 @@ namespace TaskSolution
                         if (!foundCorrect)
                             foundCorrect = true;
                         else
-                            answer.IsCorrect = false; // Set the extra correct answers to false
+                            answer.IsCorrect = false;
                     }
                 }
             }
         }
+
         public override string ToString()
         {
-            return $"Choose One: {Header}, Marks: {Marks}, Options: { Body.ToString()}";
+            return $"Choose One: {Header}, Marks: {Marks}, Options: {Body.ToString()}";
         }
     }
 
@@ -69,7 +112,6 @@ namespace TaskSolution
         {
         }
 
-        
         public override string ToString()
         {
             return $"Choose All: {Header}, Marks: {Marks}, Options: {Body.ToString()}";
@@ -78,14 +120,13 @@ namespace TaskSolution
 
     public class TF : QuestionClass
     {
-        public TF(string header, bool isCorrect, int marks) : base(header, new AnswerList { new AnswerClass("True", isCorrect ? true : false), new AnswerClass("False", isCorrect ? false : true) }, marks)
+        public TF(string header, bool isCorrect, int marks) : base(header, new AnswerList { new AnswerClass("True", isCorrect), new AnswerClass("False", !isCorrect) }, marks)
         {
         }
 
         public override string ToString()
         {
-            return $"TF: {Header}, Marks: {Marks}, Options: { Body.ToString()}";
+            return $"TF: {Header}, Marks: {Marks}, Options: {Body.ToString()}";
         }
     }
-
 }
