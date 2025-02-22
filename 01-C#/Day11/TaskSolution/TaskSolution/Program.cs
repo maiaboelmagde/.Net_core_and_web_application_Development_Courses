@@ -412,30 +412,10 @@ namespace TaskSolution
            2. Return a grouped a list of products only for categories that have at least one product that is out of stock.
            3. Return a grouped a list of products only for categories that have all of their products in stock.
 
-        ////LINQ - Grouping Operators
-          
-           2. Uses group by to partition a list of words by their first letter.
-           Use dictionary_english.txt for Input
-
-           3. Consider this Array as an Input 
-           string[] Arr = { "from   ", " salt", " earn ", "  last   ", " near ", " form  " };
-
-           Use Group By with a custom comparer that matches words that are consists of the same Characters Together
-           Result
-           ...
-           from 
-           form 
-           ...
-           salt
-           last 
-           ...
-           earn 
-           near
-
+        
 
             */
-
-
+            
             #region Grouping Operators
             /*
              *             1. Use group by to partition a list of numbers by their remainder when divided by 5
