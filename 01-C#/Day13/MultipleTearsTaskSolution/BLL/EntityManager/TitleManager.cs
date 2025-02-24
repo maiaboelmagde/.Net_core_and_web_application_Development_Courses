@@ -65,7 +65,9 @@ namespace BLL.EntityManager
 
         private static string GenerateUniqueTitleId(int TitlesCount)
         {
-            return "T" + (TitlesCount + 5).ToString("D3");
+            Random rnd = new Random();
+            int randomNumber = rnd.Next(1, 300);
+            return "T" + Guid.NewGuid().ToString().Substring(0, 2) + (TitlesCount).ToString("D3");
         }
 
         public static bool UpdateTitle(Title UpdatedTitle)

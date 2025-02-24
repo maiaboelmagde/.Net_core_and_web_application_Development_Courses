@@ -81,6 +81,8 @@ namespace WinFormsApp
             }
             catch (Exception ex)
             {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 MessageBox.Show("Some thing went wrong while Save changes !!!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally

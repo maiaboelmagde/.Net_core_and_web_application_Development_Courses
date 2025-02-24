@@ -25,6 +25,8 @@ namespace WinFormsApp
 
         private void DetailedList_Click(object sender, EventArgs e)
         {
+            DetailedList form = new DetailedList();
+            form.ShowDialog();
             
         }
     }
