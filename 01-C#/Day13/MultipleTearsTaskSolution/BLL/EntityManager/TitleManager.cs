@@ -12,10 +12,6 @@ namespace BLL.EntityManager
 {
     public class TitleManager
     {
-
-        //"SELECT * FROM titles INNER JOIN publishers ON publishers.pub_id = titles.pub_id"
-
-
         static DBManager manager = new();
 
         public static TitlesList SelectALLTitles()

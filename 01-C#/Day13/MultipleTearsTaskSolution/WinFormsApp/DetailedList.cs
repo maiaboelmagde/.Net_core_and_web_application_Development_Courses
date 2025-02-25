@@ -159,7 +159,7 @@ namespace WinFormsApp
         {
             Title newTitle = new Title
             {
-                title_id = "New Item",
+                title_id = "New Title",
                 title = "New Title",
                 type = "",
                 price = 0,
@@ -173,9 +173,7 @@ namespace WinFormsApp
             };
 
             titles.Add(newTitle);
-            TitlesBindingSource.DataSource = titles; 
             TitlesBindingSource.Position = titles.Count - 1; 
-
             MessageBox.Show("New Title Added! Fill in details and click Save.", "Insert", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
