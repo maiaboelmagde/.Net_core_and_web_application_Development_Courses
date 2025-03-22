@@ -1,4 +1,6 @@
 
+using APILabs.Middleware;
+
 namespace APILabs
 {
     public class Program
@@ -17,6 +19,8 @@ namespace APILabs
 
             var app = builder.Build();
 
+            app.UseMiddleware<ExceptionMiddleware>();
+
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
@@ -26,11 +30,10 @@ namespace APILabs
             }
 
             app.UseAuthorization();
-
-
             app.MapControllers();
 
             app.Run();
+
         }
     }
 }
