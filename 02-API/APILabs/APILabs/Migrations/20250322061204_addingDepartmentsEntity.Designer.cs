@@ -4,6 +4,7 @@ using APILabs.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace APILabs.Migrations
 {
     [DbContext(typeof(StudentContext))]
-    partial class StudentContextModelSnapshot : ModelSnapshot
+    [Migration("20250322061204_addingDepartmentsEntity")]
+    partial class addingDepartmentsEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,7 +47,7 @@ namespace APILabs.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Departments", (string)null);
+                    b.ToTable("Departments");
                 });
 
             modelBuilder.Entity("APILabs.Models.Student", b =>
@@ -76,34 +79,12 @@ namespace APILabs.Migrations
                     b.Property<DateTime>("birthDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("departmentId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("deptID")
-                        .HasColumnType("int");
-
                     b.Property<int>("grade")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("departmentId");
-
-                    b.ToTable("Students", (string)null);
-                });
-
-            modelBuilder.Entity("APILabs.Models.Student", b =>
-                {
-                    b.HasOne("APILabs.Models.Department", "department")
-                        .WithMany("Students")
-                        .HasForeignKey("departmentId");
-
-                    b.Navigation("department");
-                });
-
-            modelBuilder.Entity("APILabs.Models.Department", b =>
-                {
-                    b.Navigation("Students");
+                    b.ToTable("Students");
                 });
 #pragma warning restore 612, 618
         }

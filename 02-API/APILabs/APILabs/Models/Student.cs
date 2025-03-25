@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using APILabs.Filters;
 using APILabs.Validation;
 
@@ -24,5 +25,9 @@ namespace APILabs.Models
         [RegularExpression(@"^\d+$", ErrorMessage = "Phone number must contain only digits.")]
         public string? PhoneNum { get; set; }
         public int grade { get; set; }
+
+        [ForeignKey(nameof(Department))]
+        public int deptID { get; set; }
+        public Department? department { get; set; }
     }
 }
