@@ -9,13 +9,45 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="NarrowState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowHeight="0"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="BookImage.MaxHeight" Value="200"/>
+                    </VisualState.Setters>
+                </VisualState>
+                
+                <VisualState x:Name="MiddleState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowHeight="600"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="BookImage.MaxHeight" Value="400"/>
+                    </VisualState.Setters>
+                </VisualState>
+
+                <VisualState x:Name="WideState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowHeight="720"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="BookImage.MaxHeight" Value="600"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="3*" />
         </Grid.ColumnDefinitions>
 
         <ListView x:Name="BooksListView" Grid.Column="0"
-              DisplayMemberPath="Title" />
+              DisplayMemberPath="Title" Background="Beige" Foreground="White" FontWeight="Bold" />
 
         <StackPanel Grid.Column="1" Margin="10" x:Name="BookDetailsPanel" DataContext="{Binding ElementName=BooksListView, Path=SelectedItem}">
             <TextBlock FontSize="24" FontWeight="Bold" Text="{Binding Title}" />
