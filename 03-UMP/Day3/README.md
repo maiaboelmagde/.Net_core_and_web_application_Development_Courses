@@ -1,3 +1,3 @@
 ## Lab3 Task solution:
 
-https://github.com/user-attachments/assets/dffde83f-4513-4b19-bc31-8bf23a0c62e9
+https://github.com/user-attachments/assets/b642d6c7-cfe7-48dc-94d9-e0ad9cf9181c
